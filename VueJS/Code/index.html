@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta>
+        <title>Learning VueJS</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <h2> Hello, {{ name }}</h2>
+            <div class="product">
+                <div class="product-image">
+                    <img v-bind:style = 'product.style' v-bind:src = "product.image">
+                    <a v-bind:href = "product.link">See More</a>
+                </div>
+            </div>
+
+            <ul>
+                <li v-for="detail in product.details">
+                    {{ detail }}
+                </li>
+            </ul>
+
+            <div v-for="variant in product.variants" :key = "product.variants.id">
+                <p> {{ variant.v_color }}</p>
+            </div>
+
+            <div class="product-info">
+                <h2>{{ product.name }}</h2>
+                <p v-if="product.quantity > 0">In Stock</p>
+                <p v-else="product.quantity < 0">Out of Stock</p>
+                <button v-show="product.quantity > 0"> Add to cart</button>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
